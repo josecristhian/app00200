@@ -1,3 +1,4 @@
-[submodule "_waicato-engine"]
-	path = _waicato-engine
+
+[submodule "src/app/_waicato-engine"]
+	path = src/app/_waicato-engine
 	url = https://github.com/josecristhian/_waicato-engine.git
