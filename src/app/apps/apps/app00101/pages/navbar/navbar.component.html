@@ -1,0 +1,45 @@
+
+<!-- Page Header -->
+<nav class="navbar navbar-expand navbar-expand-lg2 navbar-light fixed-top bg-light"> 
+    <div class="container-fluid">
+
+        <!-- menú móvil -->
+        <div class="btn-group d-block d-lg-none d-xl-none">
+            <a class="relative rounded-bg" data-target-toggle="javascript:void(0)" id="navbarDropdownMenuLin" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-xl fa-solid fa-bars"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" [routerLink]="['/explorar']"><i class="fa-solid fa-hand-holding-dollar"></i>&nbsp;Explorar</a></li>
+
+                <li><a class="dropdown-item" [routerLink]="['/home']" *ngIf="this.auth.auth.authenticated"><i class="fa-solid fa-gear"></i>&nbsp;Panel de Control</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/logout']" *ngIf="this.auth.auth.authenticated"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Cerrar Sesión</a></li>
+              
+                <li><a class="dropdown-item" [routerLink]="['/auth']" *ngIf="!this.auth.auth.authenticated"><i class="fa-solid fa-key"></i>&nbsp;Iniciar Sesión</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/register']" *ngIf="!this.auth.auth.authenticated"><i class="fa-solid fa-address-card"></i>&nbsp;Registrarse</a></li>
+            </ul>
+        </div>
+        
+        <!-- logo móvil -->
+        <div class="d-block d-lg-none d-xl-none" style="display: block; margin-left: auto; margin-right: auto;">
+            <a [routerLink]="['/web']"><img src="assets/waicato/app00101/img/logo0.png" height="40px"></a>
+        </div>
+
+        <!-- menú desktop -->
+        <div class="d-none d-lg-block">
+            <a [routerLink]="['/web']"><img src="assets/waicato/app00101/img/logo0.png" height="40px"></a>
+        </div>
+        
+        <!-- menú desktop -->
+        <div class="d-none d-lg-block" style="margin-right: 10px;">
+            <span *ngIf="this.auth.auth.authenticated"><i class="fa-solid fa-gear"></i><a [routerLink]="['/home']" class="linksMenuTop">Panel de Control</a>&nbsp;</span>
+            <i class="fa-solid fa-hand-holding-dollar"></i><a [routerLink]="['/explorar']" class="linksMenuTop">Explorar</a>&nbsp;
+            <span *ngIf="this.auth.auth.authenticated"><i class="fa-solid fa-right-from-bracket"></i><a [routerLink]="['/logout']" class="linksMenuTop">Cerrar Sesión</a>&nbsp;</span>
+
+            <span *ngIf="!this.auth.auth.authenticated"><a href="" class="linksMenuTop" [routerLink]="'/auth'">Iniciar Sesión</a>&nbsp;</span>
+            <button type="button" class="btn btn-primary" *ngIf="!this.auth.auth.authenticated" [routerLink]="['/register']">Registrarse</button>
+        </div>
+
+
+    </div>
+</nav>
+<!-- End Page Header -->

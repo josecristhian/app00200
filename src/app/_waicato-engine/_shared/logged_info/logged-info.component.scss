@@ -1,0 +1,55 @@
+.bg-sc {
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: auto;
+	padding: 4rem 2rem;
+	background-attachment: fixed;
+	min-height: calc(100vh - 15rem);
+	width: 100%;
+}
+
+.login-wrapper {
+	background-image: url("/assets/waicato/img/login-banner2.jpg");
+	@extend .bg-sc;
+	background-position: bottom left;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+}
+
+.login-block {
+    background: #fff;
+	border-radius: 10px;
+	padding: 5.5rem 3rem 3rem;
+	.login-icon {
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: -50px;
+		span {
+			box-shadow: 0 6px 12px 3px rgba(0, 0, 0, 0.17);
+			background-color: #007bff;
+			color: #fff;
+			border-radius: 100%;
+		}
+	};
+	width: 485px;
+	position: relative !important;
+}
+
+.square-100 {
+    display: inline-block;
+    font-size: 50px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    width: 100px;
+    vertical-align: middle;
+}
+
+.login-info {
+	color: black;
+	display: block;
+}

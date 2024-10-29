@@ -1,0 +1,113 @@
+<div class="d-flex app" id="wrapper">
+
+    <!-- Sidebar -->
+	<div class="modal_sidebar">
+		<app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
+	</div>
+
+	<a href="javascript:void(0)" (click)="toggleSideBar()" class="d-block d-lg-none d-xl-none" [ngClass]="sidebarExpanded ? '' : 'backdrop_sidebar'"></a>
+	
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      		
+		<!-- Page Header -->
+		<nav class="navbar navbar-expand navbar-expand-lg2 navbar-light bg-light"> 
+
+							<div class="collapse navbar-collapse" id="navbarSupportedContent" style="border: 1px; width: 100%;">
+								<div class="h-100 waicato-ham-icon navbar-brand">
+									<button type="button" class="btn btn-light circle rounded-circle" (click)="toggleSideBar()"><span class="fa-solid fa-bars" [ngClass]="sidebarExpanded ? '' : 'fa-rotate-90'" data-bs-toggle="tooltip" data-bs-placement="right"></span></button>
+								</div>
+
+								<div class="d-none d-lg-block" style="display: block; margin-left: auto; margin-right: auto;">
+									<ul class="navbar-nav">
+										<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="backClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Atrás"><i class="fa-solid fa-arrow-left fa-xl headerIcons"></i></a></li>
+										<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="forwardClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Adelante"><i class="fa-solid fa-arrow-right fa-xl headerIcons"></i></a></li>
+										<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="refreshClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Recargar"><i class="fa-solid fa-arrows-rotate fa-xl headerIcons"></i></a></li>
+										<li class="nav-item"><a class="nav-link d-none d-md-block" [routerLink]="['/home']" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio"><i class="fa-solid fa-house fa-xl headerIcons"></i></a></li>
+										<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="toggleFullscreen()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pantalla Completa"><i class="fa-solid fa-tv fa-xl headerIcons" *ngIf="!isFullscreen"></i><i class="fa-solid fa-compress fa-xl headerIcons" *ngIf="isFullscreen"></i></a></li>
+										<li class="nav-item">&nbsp;&nbsp;</li>
+									</ul>
+								</div>
+
+								<div class="d-block d-lg-none d-xl-none" style="display: block; margin-left: auto; margin-right: auto;">
+									<img src="assets/waicato-core/img/brand/logo0.png" width="150px">
+								</div>
+	
+								<div class="dropdown">
+										<button class="btn relative rounded-bg dropdown-toggle" type="button" style="border: 0px; background-color: white;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle" src="{{ sessionService.getUserLogged()?.image }}" alt="User-image" width="43" height="43"></button>
+										
+										<div class="dropdown-content" style="right: 0px !important; z-index: 9999999999 !important;" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">
+											<a class="dropdown-item" [routerLink]="['/my/tasks']" type="button"><i class="fa fa-inbox"></i>&nbsp;Mis Tareas</a>
+											<a class="dropdown-item" [routerLink]="['/my/processes']"><i class="fa fa-cube"></i>&nbsp;Mis Procesos</a>
+											<a class="dropdown-item" [routerLink]="['/status']"><i class="fa fa-signal"></i>&nbsp;Servicios</a>
+	
+											<hr class="dropdown-divider">
+											<a class="dropdown-item" href="javascript:void(0)"><span><i class="fa-solid fa-building"></i>&nbsp;{{ sessionService.getTenant().name }}</span></a>
+											
+												<hr class="dropdown-divider">
+											
+											<a class="dropdown-item" [routerLink]="['/view/5df7c603b04de5001aa3a70d/usuario/' + sessionService.getUserLogged()?.id + '/view']"><i class="fa-solid fa-id-card"></i>&nbsp;Mi Perfil</a>
+											<a class="dropdown-item" [routerLink]="['/auth']"><i class="fa-solid fa-user-shield"></i>&nbsp;Info Sesión</a>
+											<a class="dropdown-item" (click)="logOut()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Cerrar Sesión</a>
+										</div>
+								</div>
+							</div>
+
+      	</nav>
+		<!-- End Page Header -->
+
+		<!-- Page Content -->
+		<div class="container-fluid">
+
+						<!-- BODY -->
+						<div class="waicato-base-container pt-4" #scrollContainer>
+
+							<waicato-top-bar></waicato-top-bar>
+	
+							<ng-scrollbar style="height: calc(100vh - 100px); width: 100%;" #scrollbar>
+								<div scrollViewport>
+									<div class="inner-container" >
+										<!-- SPINNER -->
+										<waicato-toast></waicato-toast>
+										<waicato-spinner [ID]="'MainSpinner'"></waicato-spinner>
+				
+										<!-- CONTENT -->
+										<div class="chk-block">
+											<div class="chk-block-content">
+												<div class="container-fluid" style="margin-right: 0.5% !important; width: auto !important;">
+													<router-outlet #child="outlet" (activate)="onActivate($event, scrollContainer)" (deactivate)="onDeactivate()"></router-outlet>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</ng-scrollbar>
+						</div>
+				
+		</div>
+		<!-- End Page Content -->
+
+    </div>
+    <!-- End Page Content -->
+
+	<!-- Error Sidebar -->
+	<div class="modal fade search-modal" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		<div class="modal-dialog" role="document">
+			<div class="container">
+				<div class="mb-5"><input class="overlay-search" placeholder="Error desconocido :("></div>
+				<div class="search-suggestion">
+					<span class="d-block mb-3"><strong></strong></span>
+					<ul class="row search-list">
+						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
+							<a href="javascript:void(0)"><span class="d-inline-block square-50 circle bg-danger mr-2">E</span><span class="search-filter mx-1">Lo sentimos, tenemos un problema de conexión</span></a>
+							<span class="d-block">&nbsp;Intente recargar la página nuevamente</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  </div>

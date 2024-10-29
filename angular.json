@@ -27,12 +27,48 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "src/assets", "output": "./assets/waicato" },
+              { "glob": "**/*", "input": "node_modules/waicato-core/src/assets", "output": "./assets/waicato-core" },
+              { "glob": "**/*", "input": "node_modules/waicato-auth/src/assets", "output": "./assets/waicato-auth" },
+              { "glob": "**/*", "input": "node_modules/waicato-data-mgtm/src/assets", "output": "./assets/waicato-data-mgtm" },
+              { "glob": "**/*", "input": "node_modules/waicato-processes/src/assets", "output": "./assets/waicato-processes" },
+              { "glob": "**/*", "input": "node_modules/waicato-analytics/src/assets", "output": "./assets/waicato-analytics" }
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@swimlane/ngx-datatable/index.css",
+              "node_modules/@swimlane/ngx-datatable/themes/bootstrap.css",
+              "node_modules/@swimlane/ngx-datatable/assets/icons.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css",
+              "node_modules/camunda-bpmn-js/dist/assets/camunda-platform-modeler.css",
+              "node_modules/bpmn-js/dist/assets/diagram-js.css",
+              "node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn.css",
+              "node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css",
+              "node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css",
+              "node_modules/bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css",
+              "node_modules/bpmn-js-token-simulation/assets/css/bpmn-js-token-simulation.css",
+              "node_modules/@bpmn-io/properties-panel/assets/properties-panel.css",
+              "node_modules/bpmn-js-element-templates/dist/assets/element-templates.css",
+              "node_modules/bpmn-js-connectors-extension/dist/connectors-extension.css",
+              "node_modules/dmn-js/dist/assets/diagram-js.css",
+              "node_modules/dmn-js/dist/assets/dmn-js-decision-table-controls.css",
+              "node_modules/dmn-js/dist/assets/dmn-js-decision-table.css",
+              "node_modules/dmn-js/dist/assets/dmn-js-drd.css",
+              "node_modules/dmn-js/dist/assets/dmn-js-literal-expression.css",
+              "node_modules/dmn-js/dist/assets/dmn-js-shared.css",
+              "node_modules/dmn-js/dist/assets/dmn-font/css/dmn-codes.css",
+              "node_modules/dmn-js/dist/assets/dmn-font/css/dmn-embedded.css",
+              "node_modules/dmn-js/dist/assets/dmn-font/css/dmn.css",
+              "node_modules/diagram-js-minimap/assets/diagram-js-minimap.css",
+              "node_modules/@bpmn-io/element-template-chooser/dist/element-template-chooser.css",
+              "node_modules/waicato-core/src/assets/css/shared.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+ selector: 'app-main',
+ template: `
+ 	<waicato-engine></waicato-engine>
+	<router-outlet></router-outlet>
+ `
 })
-export class AppComponent {
-  title = 'fundme';
-}
+
+export class WaicatoMainComponent {}

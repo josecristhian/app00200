@@ -1,0 +1,89 @@
+<div class="sidebar" id="sidebar-wrapper" [ngClass]="isExpanded? 'show' : 'hide'">
+
+    <!-- LOGO -->
+    <div class="sidebar-logo-wrap">
+        <div class="sidebar-logo d-flex"><div class="text-center" ><img src="assets/waicato-core/img/brand/logo3.png" height="45" alt=""></div></div>
+    </div>
+
+    <!-- USER DATA + MENU -->
+    <div class="sidebar-container">
+
+        <!-- USER DATA + USER MENU -->
+        <div class="user-section text-center d-none d-md-block">
+            <div class="sidebar-user-wrap">
+                <div class="sidebar-user-inner">
+                    <div class="d-flex">
+                        <div class="thumb-wrap mb-1"><img alt="Usuario" class="img-fluid" src="{{ sessionService.getUserLogged()?.image }}" width="90" height="90"></div>
+                        <div class="user-action">
+                            <a  class="text-dark"><i class="fa-solid fa-ellipsis"></i></a>
+                            <div class="sidebar-user-menu">
+                                <ul>
+                                    <li><a href="javascript:void(0);" [routerLink]="['/view/5df7c603b04de5001aa3a70d/usuario/' + sessionService.getUserLogged()?.id + '/view']"><i class="icon-user icons"></i><span>{{'Mi Perfil'}}</span></a></li>
+                                    <li><a (click)="logOut()"><i class="icon-logout icons"></i><span>{{'Cerrar Sesión'}}</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar-user-info-wrap">
+                        <div class="sidebar-user-name">{{ sessionService.getUserLogged()?.nombre }}</div>
+                        <div class="sidebar-user-name">{{ sessionService.getTenant()?.name }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR MENU -->
+        <ng-scrollbar [ngStyle]="{ 'height': 'calc(100vh - 220px)', 'width': '100%' }" #scrollbar>
+            <div>
+                <nav menuToggleDirective class="navigation">
+                    <ul class="waicato-nav">
+                        <li class="nav-item" menuToggleLink *ngFor="let menuitem of menuItemsClass.getAll()" [ngClass]="{'menu-item-has-child': menuitem.type=='sub'}">
+
+                            <!-- externals -->
+                            <a target="_blank" href="{{menuitem.state}}" *ngIf="menuitem.type === 'ext-link'" tourAnchor="tour-ui">
+                                <i class="{{ menuitem.icon }} {{ menuitem.color }}"></i><p class="text-nowrap mb-0"><span>{{ menuitem.name }}</span>{{menuitem.label}}</p>
+                            </a>
+
+                            <!-- fijos -->
+                            <a menuToggle routerLink="/{{menuitem.state}}" routerLinkActive="active-link" *ngIf="menuitem.type === 'link'">
+                                <i class="{{ menuitem.icon }} {{ menuitem.color }}" ></i>
+                                <p class="text-nowrap mb-0"><span>{{ menuitem.name }}</span></p>
+                                <ng-container *ngIf="menuitem.label"><span class="sidebar-label">{{menuitem.label}}</span></ng-container>
+                            </a>
+
+                            <!-- menú singles -->
+                            <a routerLink="{{ menuitem.app?.length > 0 ? '/' + menuitem.app : '' }}/{{menuitem.state}}" routerLinkActive="active-link" *ngIf="menuitem.type === 'single'" tourAnchor="tour-ui">
+                                <i class="{{ menuitem.icon }} {{ menuitem.color }}"></i><p class="text-nowrap mb-0"><span>{{ menuitem.name }}</span>{{menuitem.label}}</p>
+                                <ng-container *ngIf="menuitem.name==='Mis Tareas'">
+                                    <span class="sidebar-label">&nbsp;{{ 5 }}&nbsp;</span>
+                                    <span class="fa fa-circle fa-notify text-warning dot-note" *ngIf="true"></span>
+                                    <span class="fa fa-check text-success dot-note" *ngIf="false"></span>
+                                </ng-container>
+                            </a>
+
+                            <!-- menú padre con hijos -->
+                            <a menuToggle href="javascript:void(0)" *ngIf="menuitem.type === 'sub'">
+                                <i class="{{ menuitem.icon }} {{ menuitem.color }}"></i>
+                                <p class="text-nowrap mb-0"><span>{{ menuitem.name }}</span></p>
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                <ng-container *ngIf="menuitem.label"><span class="sidebar-label">{{menuitem.label}}</span></ng-container>
+                            </a>
+                            <!-- menú hijo -->
+                            <ul class="sub-menu waicato-nav" *ngIf="menuitem.type === 'sub'">
+                                <li class="nav-item" menuToggleLink *ngFor="let childitem of menuitem.children" >
+                                    <a href="#" [routerLink]="[ (childitem.app?.length > 0 ? '/' + childitem.app : '') + childitem.state]" [queryParams]="this.toJson(childitem.parametros)" routerLinkActive="active-link">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="{{ childitem['icon'] }} {{ childitem.color }}" style="font-size: 0.9rem; margin: 1px"></i>
+                                        <p class="text-nowrap mb-0"><span>{{ childitem.name }}</span></p>
+                                        <ng-container *ngIf="childitem.label"><span class="sidebar-label">{{childitem.label}}</span></ng-container>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </ng-scrollbar>
+
+    </div>
+
+</div>

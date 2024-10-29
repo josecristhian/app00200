@@ -1,13 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <title>Fundme</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Welcome!</title>
+	<base href="/">
+
+  	<script> if (global === undefined) { var global = window; } </script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+
+	<meta name="author" content="">
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+	
 </head>
+
 <body>
-  <app-root></app-root>
+
+	<app-main></app-main>
+	<script type="text/javascript">
+		(function (window) {
+		// Polyfills DOM4 MouseEvent only on IE11
+		// Fixes ngx-charts line-chart hover
+		if (!!window.MSInputMethodContext && !!document.documentMode || document.documentMode === 10) {
+		   function MouseEvent(eventType, params) {
+				params = params || { bubbles: false, cancelable: false };
+				var mouseEvent = document.createEvent('MouseEvent');
+				mouseEvent.initMouseEvent(eventType, params.bubbles, params.cancelable, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+				return mouseEvent;
+			}
+			MouseEvent.prototype = Event.prototype;
+			window.MouseEvent = MouseEvent;
+		}
+	})(window);
+	</script>
 </body>
 </html>

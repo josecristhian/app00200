@@ -1,0 +1,5 @@
+{
+    "endpoint": "http://api.bpmsio.com:3000",
+    "endpoint1": "http://api.bpmsio.com:3000",
+    "endpoint2": "https://api.hflow.app"
+}

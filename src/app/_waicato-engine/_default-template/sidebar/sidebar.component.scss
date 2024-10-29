@@ -1,0 +1,45 @@
+#sidebar-wrapper {
+  min-height: 100vh;
+  
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+    background-color: rgba(31,21,59, 1);
+  }
+  .show // pantalla grande
+  {
+    margin-left: 0!important;
+  }
+  .hide  // no sé aún cuándo se llama
+  {
+    margin-left: -15rem!important;
+  }
+}
+@media (max-width: 767px) {
+  .show // pantalla pequeña
+  {
+    margin-left: -35rem!important;
+  }
+  .hide // cuando se muestra en movil
+  {
+    background-color: rgba(31,21,59, 1);
+    margin-left: -0!important;   
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    overflow: auto; /* Enable scroll if needed */
+  }
+}
+
+
+.scroll {
+  scrollbar-color: red orange;
+  scrollbar-width: thin;
+  overflow-y: auto;
+  overflow-x: none;
+}

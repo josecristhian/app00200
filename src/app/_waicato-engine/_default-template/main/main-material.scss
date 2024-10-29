@@ -1,0 +1,56 @@
+@import "../scss/core";
+
+@media (min-width: 768px) { 
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }   
+}
+@media (max-width: 767px) { 
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }   
+}
+
+.navbar-expand-lg2 {
+    background-color: white !important;
+    border-bottom: 1px solid #DEE4E8 !important;
+    box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15) !important;
+    padding-left: 1rem !important;
+  }
+  
+.container-fluid {
+    padding: 0.1rem !important;
+}
+
+.waicato-base-container {
+    padding: 0 !important;
+}
+
+.modal_sidebar {
+    z-index: 2;
+}
+
+.modal_sidebar:target {
+    display: none;
+}
+
+.backdrop_sidebar {
+    display: block;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: black;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.modal_sidebar:target + .backdrop_sidebar {
+    display: none;
+}
+
+.circle {
+    background-color: #F5F9FB !important;
+    border: 1px solid #DEE4E8 !important;
+    color: black !important;
+}
