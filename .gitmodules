@@ -5,3 +5,6 @@
 [submodule "src/app/apps/templates/src/app/apps/templates/template00002"]
 	path = src/app/apps/templates/src/app/apps/templates/template00002
 	url = https://github.com/josecristhian/template00002.git
+[submodule "src/apps/templates/template00002"]
+	path = src/apps/templates/template00002
+	url = https://github.com/josecristhian/template00002.git
