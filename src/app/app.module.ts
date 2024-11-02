@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { WaicatoMainComponent} from './app.component';
+import { MainComponent} from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { WaicatoMainEngineModule } from './_waicato-engine/engine.module';
 
@@ -16,7 +16,7 @@ const routes: Routes = [
 		WaicatoMainEngineModule,
 		RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
 	],
-	declarations: [WaicatoMainComponent],
-	bootstrap: [WaicatoMainComponent]
+	declarations: [MainComponent],
+	bootstrap: [MainComponent]
 })
-export class WaicatoAppModule { }
+export class MainModule { }
