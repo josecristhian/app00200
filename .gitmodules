@@ -2,6 +2,3 @@
 [submodule "src/app/_waicato-engine"]
 	path = src/app/_waicato-engine
 	url = https://github.com/josecristhian/_waicato-engine.git
-[submodule "src/app/apps/templates/template00002"]
-	path = src/app/apps/templates/template00002
-	url = https://github.com/josecristhian/template00002.git
