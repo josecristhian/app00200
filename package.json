@@ -57,11 +57,8 @@
     "screenfull": "6.0.2",
     "tslib": "2.8.0",
     "underscore": "1.13.7",
-    "waicato-analytics": "file:../../packages/waicato-analytics-1.0.0.tgz",
     "waicato-auth": "file:../../packages/waicato-auth-1.0.0.tgz",
     "waicato-core": "file:../../packages/waicato-core-1.0.0.tgz",
-    "waicato-data-mgtm": "file:../../packages/waicato-data-mgtm-1.0.0.tgz",
-    "waicato-processes": "file:../../packages/waicato-processes-1.0.0.tgz",
     "xlsx": "0.18.5",
     "zone.js": "0.14.4"
   },
