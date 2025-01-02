@@ -1,0 +1,17 @@
+#APP00200
+Reclutamiento KT
+
+Configurar apps-settings.module.ts
+
+APPS_SETTINGS
+
+```
+{ id: 'app00xxx', app: 'app00xxx', default: true, allowPublicRoutes: true, loginSource: 'usuario/login/', tenant: 'xxxxx' }
+
+```
+
+APPS_ROUTES_PRIVATE
+
+```
+{ path: 'app00xxx', loadChildren: () => import('./app00xxx/app-routing.module').then(m => m.RoutingModule) }
+```

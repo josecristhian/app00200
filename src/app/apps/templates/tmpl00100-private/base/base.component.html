@@ -1,0 +1,43 @@
+<div class="d-flex app" id="wrapper">
+
+	<div class="modal_sidebar">
+		<app-sidebar [isExpanded]="sidebarExpanded"></app-sidebar>
+	</div>	
+	
+    <div id="page-content-wrapper">
+      		
+		<tmpl00100-private-topbar (toggleSidebar)="toggleSideBar($event)" *ngIf="auth.auth.authenticated"></tmpl00100-private-topbar>
+
+		<div class="container-fluid">
+
+						<!-- BODY -->
+						<div class="waicato-base-container pt-4" #scrollContainer>
+
+							<waicato-top-bar></waicato-top-bar>
+	
+							<ng-scrollbar style="height: calc(100vh - 100px); width: 100%;" #scrollbar>
+								<div scrollViewport>
+									<div class="inner-container" >
+										<!-- SPINNER -->
+										<waicato-toast></waicato-toast>
+										<waicato-spinner [ID]="'MainSpinner'"></waicato-spinner>
+				
+										<!-- CONTENT -->
+										<div class="chk-block">
+											<div class="chk-block-content">
+												<div class="container-fluid" style="margin-right: 0.5% !important; width: auto !important;">
+													<ng-content></ng-content>													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</ng-scrollbar>
+						</div>
+				
+		</div>
+
+    </div>
+
+  </div>

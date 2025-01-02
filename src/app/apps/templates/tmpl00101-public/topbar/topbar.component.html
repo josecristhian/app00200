@@ -1,0 +1,39 @@
+<!-- Page Header -->
+<nav class="navbar navbar-expand navbar-expand-lg2 navbar-light bg-light"> 
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent" style="border: 1px; width: 100%;">
+						<div class="h-100 waicato-ham-icon navbar-brand">
+							<button type="button" class="btn btn-light circle rounded-circle" (click)="switchSideBar()"><span class="fa-solid fa-bars" [ngClass]="sidebarExpanded ? '' : 'fa-rotate-90'" data-bs-toggle="tooltip" data-bs-placement="right"></span></button>
+						</div>
+
+						<a href="javascript:void(0)" (click)="switchSideBar()" class="d-block d-lg-none d-xl-none" [ngClass]="sidebarExpanded ? '' : 'backdrop_sidebar'"></a>
+
+						<div class="d-none d-lg-block" style="display: block; margin-left: auto; margin-right: auto;">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="backClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Atrás"><i class="fa-solid fa-arrow-left fa-xl headerIcons"></i></a></li>
+								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="forwardClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Adelante"><i class="fa-solid fa-arrow-right fa-xl headerIcons"></i></a></li>
+								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="refreshClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Recargar"><i class="fa-solid fa-arrows-rotate fa-xl headerIcons"></i></a></li>
+								<li class="nav-item"><a class="nav-link d-none d-md-block" [routerLink]="['/home']" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio"><i class="fa-solid fa-house fa-xl headerIcons"></i></a></li>
+								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="toggleFullscreen()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pantalla Completa"><i class="fa-solid fa-tv fa-xl headerIcons" *ngIf="!isFullscreen"></i><i class="fa-solid fa-compress fa-xl headerIcons" *ngIf="isFullscreen"></i></a></li>
+								<li class="nav-item">&nbsp;&nbsp;</li>
+							</ul>
+						</div>
+
+						<div class="d-block d-lg-none d-xl-none" style="display: block; margin-left: auto; margin-right: auto;">
+							<img src="assets/waicato-core/img/brand/logo0.png" width="150px">
+						</div>
+
+						<div class="dropdown">
+								<button class="btn relative rounded-bg dropdown-toggle" type="button" style="border: 0px; background-color: white;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle" [src]="auth.auth.authenticated ? sessionService.getUserLogged()?.image : 'assets/waicato/img/unknow.jpg'" alt="User-image" width="43" height="43"></button>
+								
+								<div class="dropdown-content" style="right: 0px !important; z-index: 9999999999 !important;" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">
+									<ng-container *ngFor="let item of topBarMenu">
+										<a *ngIf="item.type === 'item'" class="dropdown-item" [routerLink]="item.link" type="button"><i class="{{item.icon}}"></i>&nbsp;{{item.label}}</a>
+										<hr *ngIf="item.type === 'divider'" class="dropdown-divider">
+									</ng-container>
+								</div>
+						</div>
+					</div>
+
+</nav>
+<!-- End Page Header -->
