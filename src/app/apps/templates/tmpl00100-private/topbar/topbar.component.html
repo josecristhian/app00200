@@ -1,29 +1,34 @@
 <!-- Page Header -->
-<nav class="navbar navbar-expand navbar-expand-lg2 navbar-light bg-light"> 
+<nav class="navbar navbar-expand navbar-light bg-light" [attr.style]="'background-color: ' + TS.topbar.background_color + ' !important; box-shadow: ' + TS.topbar.box_shadow + ' !important; border-bottom: ' + TS.topbar.border_bottom + ' !important; padding-left: ' + TS.topbar.padding_left  + ' !important;'">
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent" style="border: 1px; width: 100%;">
-						<div class="h-100 waicato-ham-icon navbar-brand">
+						<div class="h-100 waicato-ham-icon navbar-brand" *ngIf="TS.topbar.show_sidebar_toggle">
 							<button type="button" class="btn btn-light circle rounded-circle" (click)="switchSideBar()"><span class="fa-solid fa-bars" [ngClass]="sidebarExpanded ? '' : 'fa-rotate-90'" data-bs-toggle="tooltip" data-bs-placement="right"></span></button>
 						</div>
 
-						<a href="javascript:void(0)" (click)="switchSideBar()" class="d-block d-lg-none d-xl-none" [ngClass]="sidebarExpanded ? '' : 'backdrop_sidebar'"></a>
+						<a href="javascript:void(0)" *ngIf="TS.topbar.show_sidebar_toggle" (click)="switchSideBar()" class="d-block d-lg-none d-xl-none" [ngClass]="sidebarExpanded ? '' : 'backdrop_sidebar'"></a>
 
 						<div class="d-none d-lg-block" style="display: block; margin-left: auto; margin-right: auto;">
-							<ul class="navbar-nav">
-								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="backClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Atrás"><i class="fa-solid fa-arrow-left fa-xl headerIcons"></i></a></li>
-								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="forwardClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Adelante"><i class="fa-solid fa-arrow-right fa-xl headerIcons"></i></a></li>
-								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="refreshClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Recargar"><i class="fa-solid fa-arrows-rotate fa-xl headerIcons"></i></a></li>
-								<li class="nav-item"><a class="nav-link d-none d-md-block" [routerLink]="['/home']" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio"><i class="fa-solid fa-house fa-xl headerIcons"></i></a></li>
-								<li class="nav-item"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="toggleFullscreen()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pantalla Completa"><i class="fa-solid fa-tv fa-xl headerIcons" *ngIf="!isFullscreen"></i><i class="fa-solid fa-compress fa-xl headerIcons" *ngIf="isFullscreen"></i></a></li>
+							<ul class="navbar-nav" *ngIf="TS.topbar.show_tools">
+								<li class="nav-item" *ngIf="TS.topbar.show_tools_back"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="backClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Atrás"><i class="fa-solid fa-arrow-left fa-xl headerIcons"></i></a></li>
+								<li class="nav-item" *ngIf="TS.topbar.show_tools_forward"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="forwardClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Adelante"><i class="fa-solid fa-arrow-right fa-xl headerIcons"></i></a></li>
+								<li class="nav-item" *ngIf="TS.topbar.show_tools_refresh"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="refreshClicked()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Recargar"><i class="fa-solid fa-arrows-rotate fa-xl headerIcons"></i></a></li>
+								<li class="nav-item" *ngIf="TS.topbar.show_tools_home"><a class="nav-link d-none d-md-block" [routerLink]="['/home']" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio"><i class="fa-solid fa-house fa-xl headerIcons"></i></a></li>
+								<li class="nav-item" *ngIf="TS.topbar.show_tools_fullscreen"><a class="nav-link d-none d-md-block" href="javascript:void(0)" (click)="toggleFullscreen()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pantalla Completa"><i class="fa-solid fa-tv fa-xl headerIcons" *ngIf="!isFullscreen"></i><i class="fa-solid fa-compress fa-xl headerIcons" *ngIf="isFullscreen"></i></a></li>
 								<li class="nav-item">&nbsp;&nbsp;</li>
 							</ul>
 						</div>
 
-						<div class="d-block d-lg-none d-xl-none" style="display: block; margin-left: auto; margin-right: auto;">
-							<img src="assets/waicato-core/img/brand/logo0.png" width="150px">
+						<div *ngIf="TS.topbar.show_logo_on_mobile" class="sidebar-logo-wrap d-block d-lg-none d-xl-none" style="width: 500px;">
+							<div class="sidebar-logo d-flex justify-content-center align-items-center">
+								<div class="text-center d-flex align-items-center">
+									<img [src]="TS.topbar.admin_logo" [height]="TS.topbar.admin_logo_height" class="mr-2">&nbsp;
+									<span style="font-size: 20px; color: #191970; font-weight: bolder; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">waicato.com</span>
+								</div>
+							</div>
 						</div>
-
-						<div class="dropdown">
+						
+						<div class="dropdown" *ngIf="TS.topbar.show_user">
 								<button class="btn relative rounded-bg dropdown-toggle" type="button" style="border: 0px; background-color: white;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle" src="{{ sessionService.getUserLogged()?.image }}" alt="User-image" width="43" height="43"></button>
 								
 								<div class="dropdown-content" style="right: 0px !important; z-index: 9999999999 !important;" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">

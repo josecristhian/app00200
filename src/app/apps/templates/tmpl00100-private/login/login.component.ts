@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthLoginComponent } from '../../../../_waicato-engine/_shared/auth/auth.component';
 import { Tmpl00100_Private_BaseComponent } from '../base/base.component';
+import { WaicatoTopBarService } from 'waicato-core';
+import { RouterModule } from '@angular/router';
 
 declare var $: any;
 
@@ -9,7 +11,7 @@ declare var $: any;
 @Component({
   selector: 'tmpl00100-private-login',
   standalone: true,
-  imports: [CommonModule, AuthLoginComponent, Tmpl00100_Private_BaseComponent],
+  imports: [CommonModule, AuthLoginComponent, RouterModule, Tmpl00100_Private_BaseComponent],
   template: `
     <tmpl00100-private-base>
       <div class="registerone-wrapper d-flex align-items-center justify-content-between">
@@ -24,9 +26,11 @@ declare var $: any;
 
           <div class="card card-primary panel panel-default text-left">
             <div class="card-body panel-body">
-            <auth-login></auth-login>
+              <auth-login></auth-login>
             </div>
           </div>
+
+          <a [routerLink]="'/public'"><i class="fa-solid fa-globe"></i>&nbsp;Volver Página Web Principal</a>
 
         </div>
       </div>
@@ -37,10 +41,11 @@ declare var $: any;
 })
 export class Tmpl00100_Private_Login_Component implements OnInit {
 
-  constructor() {
+  constructor(private topBarService: WaicatoTopBarService) {
   }
 
   ngOnInit(): void {
+    this.topBarService.setTitle('');
   }
 
 

@@ -1,15 +1,21 @@
-<div class="sidebar" id="sidebar-wrapper" [ngClass]="isExpanded? 'show' : 'hide'">
+<div class="sidebar" id="sidebar-wrapper" [ngClass]="isExpanded? 'show' : 'hide'" [ngStyle]="{ 'background-color': TS.sidebar.general.background_color}">
 
-    <!-- LOGO -->
-    <div class="sidebar-logo-wrap">
-        <div class="sidebar-logo d-flex"><div class="text-center" ><img src="assets/waicato-core/img/brand/logo3.png" height="45" alt=""></div></div>
+    <div [ngStyle]="{ 'width': TS.sidebar.general.width }"></div>
+
+    <div class="sidebar-logo-wrap" *ngIf="TS.sidebar.logo.show">
+        <div class="sidebar-logo d-flex justify-content-center align-items-center">
+            <div class="text-center d-flex align-items-center">
+                <img [src]="TS.sidebar.logo.admin_logo" [height]="TS.sidebar.logo.admin_logo_height" class="mr-2">&nbsp;
+                <span [ngStyle]="{ 'font-size': TS.sidebar.logo.text_size, color: TS.sidebar.logo.text_color, 'text-shadow': TS.sidebar.logo.text_shadow}" style="font-weight: bolder;">{{ TS.sidebar.logo.text }}</span>
+            </div>
+        </div>
     </div>
 
     <!-- USER DATA + MENU -->
     <div class="sidebar-container">
 
         <!-- SIDEBAR MENU -->
-        <ng-scrollbar [ngStyle]="{ 'height': 'calc(100vh - 220px)', 'width': '100%' }" #scrollbar>
+        <ng-scrollbar [ngStyle]="{ 'height': 'calc(115vh - 220px)', 'width': '100%' }" #scrollbar>
             <div>
                 <nav menuToggleDirective class="navigation">
                     <ul class="waicato-nav">
@@ -58,6 +64,8 @@
                     </ul>
                 </nav>
             </div>
+
+            <div style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: #f8f9f9" [ngStyle]="{ color: TS.sidebar.footer.color}" [innerHTML]="TS.sidebar.footer.text"></div>
         </ng-scrollbar>
 
     </div>

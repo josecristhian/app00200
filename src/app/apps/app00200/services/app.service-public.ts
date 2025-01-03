@@ -40,7 +40,7 @@ export class AppServicePublic  {
       const sidebar_menu = [
         { data: { nivel: 'item', nombre: 'Inicio', itemIcon: 'fa fa-home', routeFixed: '/public/home', color: '', app: '' }, _id: '1' },
         { data: { nivel: 'item', nombre: 'Acerca de', itemIcon: 'fa-regular fa-circle-question', routeFixed: '/public/about', color: '', app: '' }, _id: '2' },
-        { data: { nivel: 'item', nombre: 'AppKT', itemIcon: 'fa-brands fa-sketch', routeFixed: '/app00200', color: '', app: '' }, _id: '3' },
+        { data: { nivel: 'item', nombre: 'Aplicación', itemIcon: 'fa-solid fa-box-open', routeFixed: '/app00200', color: '', app: '' }, _id: '3' },
       ]
 
       setTimeout(() => {

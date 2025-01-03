@@ -7,6 +7,7 @@ import { MenuItems } from "./menu/menu-items/menu-items";
 import { WaicatoAuthService } from "waicato-auth";
 import { MenuToggleModule } from "./menu/menu-toggle.module";
 import _ from 'underscore';
+import { TEMPLATE_SETTINGS } from '../config.module';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,6 +22,7 @@ export class SidebarComponent implements OnInit {
 	@Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	menuItems = []
+	TS = TEMPLATE_SETTINGS;
 
 	handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
 

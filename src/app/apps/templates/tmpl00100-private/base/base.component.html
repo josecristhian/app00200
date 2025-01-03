@@ -23,8 +23,8 @@
 										<waicato-spinner [ID]="'MainSpinner'"></waicato-spinner>
 				
 										<!-- CONTENT -->
-										<div class="chk-block">
-											<div class="chk-block-content">
+										<div [ngClass]="{'chk-block': TS.main.useChkBlock, 'withoutChkBlock': !TS.main.useChkBlock}">
+											<div [ngClass]="{'chk-block-content': TS.main.useChkBlock, 'withoutChkBlock': !TS.main.useChkBlock}">
 												<div class="container-fluid" style="margin-right: 0.5% !important; width: auto !important;">
 													<ng-content></ng-content>													
 												</div>

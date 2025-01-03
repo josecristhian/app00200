@@ -3,7 +3,7 @@ import { WaicatoAuthService } from 'waicato-auth';
 import {CommonModule, Location} from '@angular/common';
 import screenfull from 'screenfull';
 import _ from 'underscore';
-
+import { TEMPLATE_SETTINGS } from '../config.module';
 import { MenuToggleModule } from '../sidebar/menu/menu-toggle.module';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { WaicatoToastModule, WaicatoSpinnerModule, WaicatoTopBarModule, WaicatoSessionService, WaicatoEventsService } from 'waicato-core';
@@ -24,10 +24,11 @@ declare var $: any;
 })
 
 export class Tmpl00100_Private_BaseComponent implements OnInit {
-
-	sidebarExpanded = true;
+	
 	isFullscreen = false;
 	topBarMenu: any[] = [];
+	TS = TEMPLATE_SETTINGS;
+	sidebarExpanded = true;
 
 	constructor(public auth: WaicatoAuthService, public sessionService: WaicatoSessionService, public _location: Location, public eventsService: WaicatoEventsService) {
 	}

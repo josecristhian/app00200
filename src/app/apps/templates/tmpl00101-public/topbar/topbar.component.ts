@@ -3,7 +3,7 @@ import { WaicatoAuthService } from 'waicato-auth';
 import {CommonModule, Location} from '@angular/common';
 import screenfull from 'screenfull';
 import _ from 'underscore';
-
+import { TEMPLATE_SETTINGS } from '../config.module';
 import { MenuToggleModule } from '../sidebar/menu/menu-toggle.module';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { WaicatoToastModule, WaicatoSpinnerModule, WaicatoTopBarModule, WaicatoSessionService, WaicatoEventsService } from 'waicato-core';
@@ -28,7 +28,7 @@ export class Tmpl00100_Private_TopbarComponent implements OnInit {
 	isFullscreen = false;
 	topBarMenu: any[] = [];
 	@Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
-	
+	TS = TEMPLATE_SETTINGS
 
 	constructor( public auth: WaicatoAuthService, public sessionService: WaicatoSessionService, public _location: Location, public eventsService: WaicatoEventsService) {
 	}

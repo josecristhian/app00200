@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 
-export const APPS_GENERAL_SETTINGS = { default_home: '/public/home' };
+export const APPS_GENERAL_SETTINGS = { 
+    default_home: '/public/home',
+    public_template_id: 'tmpl00101-public'
+};
 
 /**
  id: unique app identifier
