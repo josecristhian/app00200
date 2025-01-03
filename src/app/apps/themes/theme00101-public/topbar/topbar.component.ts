@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 declare var $: any;
 
 @Component({
-	selector: 'tmpl00100-private-topbar',
+	selector: 'theme00100-private-topbar',
 	standalone: true,
 	imports: [CommonModule, NgScrollbarModule, MenuToggleModule, WaicatoToastModule, WaicatoSpinnerModule, WaicatoTopBarModule, SidebarComponent, RouterModule],
 	providers: [],
@@ -22,41 +22,25 @@ declare var $: any;
 	encapsulation: ViewEncapsulation.None
 })
 
-export class Tmpl00100_Private_TopbarComponent implements OnInit {
+export class Theme00100_Private_TopbarComponent implements OnInit {
 
 	sidebarExpanded = true;
 	isFullscreen = false;
 	topBarMenu: any[] = [];
 	@Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
-	TS = TEMPLATE_SETTINGS;
+	TS = TEMPLATE_SETTINGS
 
 	constructor( public auth: WaicatoAuthService, public sessionService: WaicatoSessionService, public _location: Location, public eventsService: WaicatoEventsService) {
 	}
 
 	ngOnInit(): void {
 		this.eventsService.events$.subscribe( (e) => {
-			if ( e?.type === 'menuLoaded' ) this.loadTopBarMenu();
+			if ( e?.category === 'custom' && e?.params?.type === 'templateLoaded' && e?.params?.value === 'readyForTopbarMenu' ) this.loadTopBarMenu(e?.params?.items);
 		});
 	}
 
-	async loadTopBarMenu() {
-		const currentMenu = this.sessionService.getAppMenu();
-		const topbarItems = currentMenu.topbar;
-		
-		if ( !topbarItems.find(item => item.label === 'Servicios') ) {
-			topbarItems.unshift(
-				...[ 
-				{ type: 'divider' },
-				{ type: 'item', label: 'Servicios', icon: 'fa fa-signal', link: '/status' },
-				{ type: 'item', label: this.sessionService.getTenant().name, icon: 'fa-solid fa-building' }
-				].reverse()
-			);
-		}
-		
-		this.topBarMenu = currentMenu.topbar = topbarItems;
-		
-		// UPDATE GLOBAL MENU
-		this.sessionService.setAppMenu(currentMenu);
+	async loadTopBarMenu(items) {
+		this.topBarMenu = items;
 	}
 
 	toggleFullscreen() {
@@ -68,7 +52,6 @@ export class Tmpl00100_Private_TopbarComponent implements OnInit {
 
 	public switchSideBar() {		
 		this.sidebarExpanded = !this.sidebarExpanded;
-		console.log('running toggleSideBar: ', this.sidebarExpanded);
 		this.toggleSidebar.emit(this.sidebarExpanded);
 		return this.sidebarExpanded;
 	}

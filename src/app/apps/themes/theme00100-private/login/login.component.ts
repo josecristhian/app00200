@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthLoginComponent } from '../../../../_waicato-engine/_shared/auth/auth.component';
-import { Tmpl00100_Private_BaseComponent } from '../base/base.component';
+import { Theme00100_Private_BaseComponent } from '../base/base.component';
 import { WaicatoTopBarService } from 'waicato-core';
 import { RouterModule } from '@angular/router';
 
@@ -9,11 +9,11 @@ declare var $: any;
 
 
 @Component({
-  selector: 'tmpl00100-private-login',
+  selector: 'theme00100-private-login',
   standalone: true,
-  imports: [CommonModule, AuthLoginComponent, RouterModule, Tmpl00100_Private_BaseComponent],
+  imports: [CommonModule, AuthLoginComponent, RouterModule, Theme00100_Private_BaseComponent],
   template: `
-    <tmpl00100-private-base>
+    <theme00100-private-base>
       <div class="registerone-wrapper d-flex align-items-center justify-content-between">
         <div class="login-block text-center register-content shadow-box border mx-auto position-relative">
           <div class="login-icon mb-4">
@@ -34,12 +34,12 @@ declare var $: any;
 
         </div>
       </div>
-    </tmpl00100-private-base>
+    </theme00100-private-base>
   `,
   styleUrls: ['./login.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class Tmpl00100_Private_Login_Component implements OnInit {
+export class Theme00100_Private_Login_Component implements OnInit {
 
   constructor(private topBarService: WaicatoTopBarService) {
   }

@@ -5,7 +5,7 @@ import { TemplateHeaderComponent } from './header/header.component';
 import { TemplateFooterComponent } from './footer/footer.component';
 
 @Component({
-	selector: 'tmpl00102-public',
+	selector: 'theme00102-public',
 	standalone: true,
 	imports: [CommonModule, RouterModule, TemplateHeaderComponent, TemplateFooterComponent],
 	providers: [],
@@ -18,5 +18,5 @@ import { TemplateFooterComponent } from './footer/footer.component';
 	encapsulation: ViewEncapsulation.None
 })
 
-export class Tmpl00102_Public_Component {
+export class Theme00102_Public_Component {
 }
